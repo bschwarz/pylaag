@@ -1,6 +1,5 @@
 """Unit tests for utility functions."""
 
-
 from pylaag_core.utils import delete_nested, get_nested, set_nested
 
 
