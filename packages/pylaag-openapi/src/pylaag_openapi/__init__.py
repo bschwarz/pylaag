@@ -1,5 +1,6 @@
 """OpenAPI/Swagger document manipulation for Python."""
 
+from pylaag_openapi.codegen import CodeGenerator, Language
 from pylaag_openapi.components import ComponentManager, ComponentType
 from pylaag_openapi.document import OpenAPIDocument
 from pylaag_openapi.paths import HttpMethod, PathManager
@@ -14,4 +15,6 @@ __all__ = [
     "ComponentManager",
     "ComponentType",
     "SampleGenerator",
+    "CodeGenerator",
+    "Language",
 ]
