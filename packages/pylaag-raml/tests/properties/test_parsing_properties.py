@@ -188,7 +188,9 @@ def test_raml_invalid_document_rejection(invalid_doc_data: tuple) -> None:
 
     # Verify error message mentions the missing field
     error_message = str(exc_info.value)
-    assert "Missing required field" in error_message or "Missing RAML version marker" in error_message
+    assert (
+        "Missing required field" in error_message or "Missing RAML version marker" in error_message
+    )
 
     # Verify the error mentions the correct field
     if omitted_field == "version_marker":

@@ -1,16 +1,15 @@
 """RAML document handling."""
 
-from typing import Any, Dict, Optional
+from typing import Any
 
 import yaml
-
 from pylaag_core import LaagBase, ParseError, ValidationError
 
 
 class RAMLDocument(LaagBase):
     """Represents a RAML document."""
 
-    def __init__(self, document: Optional[Dict[str, Any]] = None):
+    def __init__(self, document: dict[str, Any] | None = None):
         """Initialize a RAML document.
 
         Args:
@@ -58,7 +57,7 @@ class RAMLDocument(LaagBase):
             document = yaml.safe_load(yaml_str)
             return cls(document)
         except yaml.YAMLError as e:
-            raise ParseError(f"Failed to parse RAML: {e}", {"input": yaml_str})
+            raise ParseError(f"Failed to parse RAML: {e}", {"input": yaml_str}) from e
 
     def to_yaml(self) -> str:
         """Serialize to YAML string.
@@ -76,9 +75,7 @@ class RAMLDocument(LaagBase):
         """
         # Check for RAML version marker
         if "#%RAML 1.0" not in self._document and "#%RAML 0.8" not in self._document:
-            raise ValidationError(
-                "Missing RAML version marker (#%RAML 1.0 or #%RAML 0.8)"
-            )
+            raise ValidationError("Missing RAML version marker (#%RAML 1.0 or #%RAML 0.8)")
 
         if "title" not in self._document:
             raise ValidationError("Missing required field: title")
