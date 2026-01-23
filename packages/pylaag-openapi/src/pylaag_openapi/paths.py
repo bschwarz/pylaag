@@ -53,7 +53,10 @@ class PathManager:
         Returns:
             The path item object, or None if not found
         """
-        return self.document._document.get("paths", {}).get(path)
+        paths = self.document._document.get("paths", {})
+        if not isinstance(paths, dict):
+            return None
+        return paths.get(path)
 
     def add_operation(
         self,
@@ -101,4 +104,10 @@ class PathManager:
         Returns:
             The operation object, or None if not found
         """
-        return self.document._document.get("paths", {}).get(path, {}).get(method)
+        paths = self.document._document.get("paths", {})
+        if not isinstance(paths, dict):
+            return None
+        path_item = paths.get(path, {})
+        if not isinstance(path_item, dict):
+            return None
+        return path_item.get(method)

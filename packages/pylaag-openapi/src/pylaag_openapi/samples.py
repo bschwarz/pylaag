@@ -152,7 +152,10 @@ class SampleGenerator:
             A generated number value (int or float)
         """
         if "example" in schema:
-            return schema["example"]
+            example = schema["example"]
+            if isinstance(example, (int, float)):
+                return example
+            return 0
 
         minimum = schema.get("minimum", 0)
         maximum = schema.get("maximum", 100)

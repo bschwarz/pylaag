@@ -7,7 +7,7 @@ import yaml
 from pylaag_core import LaagBase, ParseError, ValidationError
 
 
-class OpenAPIDocument(LaagBase):
+class OpenAPIDocument(LaagBase[dict[str, Any]]):
     """Represents an OpenAPI document.
 
     This class provides methods for creating, parsing, serializing, and
