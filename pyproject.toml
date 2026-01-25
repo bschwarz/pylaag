@@ -8,6 +8,42 @@ license = { text = "MIT" }
 authors = [
     { name = "Laag Contributors" }
 ]
+keywords = [
+    "api",
+    "specification",
+    "openapi",
+    "swagger",
+    "raml",
+    "smithy",
+    "api-design",
+    "api-documentation",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP",
+    "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+all = [
+    "pylaag-core",
+    "pylaag-openapi",
+    "pylaag-raml",
+    "pylaag-smithy",
+]
+
+[project.urls]
+Homepage = "https://github.com/laag/laag-python"
+Repository = "https://github.com/laag/laag-python"
+Documentation = "https://github.com/laag/laag-python#readme"
+"Bug Tracker" = "https://github.com/laag/laag-python/issues"
 
 [tool.uv.workspace]
 members = [
@@ -16,6 +52,12 @@ members = [
     "packages/pylaag-raml",
     "packages/pylaag-smithy"
 ]
+
+[tool.uv.sources]
+pylaag-core = { workspace = true }
+pylaag-openapi = { workspace = true }
+pylaag-raml = { workspace = true }
+pylaag-smithy = { workspace = true }
 
 [tool.uv]
 dev-dependencies = [
@@ -39,7 +81,23 @@ addopts = [
     "--cov=packages",
     "--cov-report=term-missing",
     "--cov-report=html",
+    "--import-mode=importlib",
 ]
+
+[tool.hypothesis]
+# Default profile for local development
+max_examples = 100
+deadline = 400
+
+[tool.hypothesis.profiles.ci]
+# Extended testing for CI
+max_examples = 1000
+deadline = 1000
+
+[tool.hypothesis.profiles.dev]
+# Quick testing during development
+max_examples = 20
+deadline = 200
 
 [tool.mypy]
 python_version = "3.10"
@@ -53,6 +111,15 @@ warn_redundant_casts = true
 warn_unused_ignores = true
 warn_no_return = true
 strict_equality = true
+explicit_package_bases = true
+namespace_packages = true
+exclude = [
+    "^packages/.*/tests/",
+]
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
 
 [tool.ruff]
 target-version = "py310"

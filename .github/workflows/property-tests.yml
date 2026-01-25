@@ -1,0 +1,42 @@
+name: Property-Based Tests
+
+on:
+  schedule:
+    # Run nightly at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  property-tests:
+    name: Extended Property-Based Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+      with:
+        enable-cache: true
+    
+    - name: Set up Python
+      run: uv python install 3.12
+    
+    - name: Install dependencies and workspace packages
+      run: uv sync --all-extras --dev
+    
+    - name: Run property-based tests with extended iterations
+      run: |
+        uv run pytest packages/*/tests/properties/ \
+          --hypothesis-profile=ci \
+          -v \
+          --tb=short
+      env:
+        HYPOTHESIS_PROFILE: ci
+    
+    - name: Upload test results
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: property-test-failures
+        path: .hypothesis/

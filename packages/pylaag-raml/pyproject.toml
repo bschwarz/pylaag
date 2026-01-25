@@ -9,8 +9,16 @@ authors = [
     { name = "Laag Contributors" }
 ]
 dependencies = [
-    "pylaag-core",
+    "pylaag-core>=0.1.0",
     "pyyaml>=6.0.1",
+]
+keywords = [
+    "raml",
+    "api",
+    "specification",
+    "rest",
+    "api-design",
+    "api-documentation",
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -21,11 +29,15 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP",
+    "Typing :: Typed",
 ]
 
 [project.urls]
 Homepage = "https://github.com/laag/laag-python"
 Repository = "https://github.com/laag/laag-python"
+Documentation = "https://github.com/laag/laag-python#readme"
+"Bug Tracker" = "https://github.com/laag/laag-python/issues"
 
 [tool.uv.sources]
 pylaag-core = { workspace = true }

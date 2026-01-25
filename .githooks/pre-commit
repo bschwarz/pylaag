@@ -27,6 +27,13 @@ if ! uv run ruff format; then
     exit 1
 fi
 
+# Run mypy type checking
+echo "\n🔎 Running mypy type checking..."
+if ! uv run mypy packages; then
+    echo "❌ Mypy type checking failed. Please fix the type errors and try again."
+    exit 1
+fi
+
 # Run pytest (only on packages that have been modified)
 echo "\n🧪 Running pytest on modified packages..."
 # Get list of modified Python files

@@ -8,6 +8,16 @@ license = { text = "MIT" }
 authors = [
     { name = "Laag Contributors" }
 ]
+keywords = [
+    "api",
+    "specification",
+    "openapi",
+    "swagger",
+    "raml",
+    "smithy",
+    "api-design",
+    "api-documentation",
+]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -17,11 +27,15 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP",
+    "Typing :: Typed",
 ]
 
 [project.urls]
 Homepage = "https://github.com/laag/laag-python"
 Repository = "https://github.com/laag/laag-python"
+Documentation = "https://github.com/laag/laag-python#readme"
+"Bug Tracker" = "https://github.com/laag/laag-python/issues"
 
 [build-system]
 requires = ["hatchling"]
