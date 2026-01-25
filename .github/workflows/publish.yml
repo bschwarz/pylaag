@@ -1,0 +1,43 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Package to publish (pylaag-core, pylaag-openapi, pylaag-raml, pylaag-smithy, or all)'
+        required: true
+        default: 'all'
+
+jobs:
+  publish:
+    name: Publish packages to PyPI
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # Required for trusted publishing
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+    
+    - name: Set up Python
+      run: uv python install 3.12
+    
+    - name: Build packages
+      run: |
+        if [ "${{ github.event.inputs.package }}" = "all" ] || [ -z "${{ github.event.inputs.package }}" ]; then
+          uv build --package pylaag-core
+          uv build --package pylaag-openapi
+          uv build --package pylaag-raml
+          uv build --package pylaag-smithy
+        else
+          uv build --package ${{ github.event.inputs.package }}
+        fi
+    
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        packages-dir: dist/

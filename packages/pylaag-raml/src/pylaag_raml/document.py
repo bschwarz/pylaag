@@ -28,17 +28,17 @@ class RAMLDocument(LaagBase):
     @property
     def title(self) -> str:
         """Get the API title."""
-        return self._document.get("title", "")
+        return str(self._document.get("title", ""))
 
     @property
     def version(self) -> str:
         """Get the API version."""
-        return self._document.get("version", "")
+        return str(self._document.get("version", ""))
 
     @property
     def base_uri(self) -> str:
         """Get the base URI."""
-        return self._document.get("baseUri", "")
+        return str(self._document.get("baseUri", ""))
 
     @classmethod
     def from_yaml(cls, yaml_str: str) -> "RAMLDocument":

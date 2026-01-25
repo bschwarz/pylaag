@@ -55,4 +55,7 @@ class TypeManager:
         Returns:
             The type definition, or None if not found.
         """
-        return self.document._document.get("types", {}).get(name)
+        types = self.document._document.get("types", {})
+        if not isinstance(types, dict):
+            return None
+        return types.get(name)
