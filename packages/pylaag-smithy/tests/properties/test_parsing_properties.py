@@ -1,6 +1,5 @@
 """Property-based tests for Smithy document parsing and serialization."""
 
-
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
