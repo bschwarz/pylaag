@@ -31,51 +31,117 @@ pip install pylaag-raml     # RAML support only
 pip install pylaag-smithy   # Smithy support only
 ```
 
+## Documentation
+
+📚 **[Complete Documentation](docs/README.md)**
+
+- **[User Guide](docs/USER_GUIDE.md)** - Comprehensive tutorials and examples
+- **[API Reference](docs/API_REFERENCE.md)** - Detailed API documentation
+- **[Quick Reference](docs/QUICK_REFERENCE.md)** - Fast lookup for common tasks
+
 ## Quick Start
 
 ### OpenAPI
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag_openapi import OpenAPIDocument, PathManager
 
-# Parse an OpenAPI document
-doc = OpenAPIDocument.from_yaml(yaml_content)
+# Create a new API
+doc = OpenAPIDocument()
+path_mgr = PathManager(doc)
+
+# Add an endpoint
+path_mgr.add_operation('/users', 'get', {
+    'summary': 'List all users',
+    'responses': {
+        '200': {'description': 'Success'}
+    }
+})
+
+# Validate and save
 doc.validate()
-
-# Access document properties
-print(doc.info['title'])
-print(doc.openapi_version)
-
-# Serialize back to YAML or JSON
-yaml_output = doc.to_yaml()
-json_output = doc.to_json()
+print(doc.to_yaml())
 ```
 
 ### RAML
 
 ```python
-from pylaag_raml import RAMLDocument
+from pylaag_raml import RAMLDocument, ResourceManager
 
-# Parse a RAML document
-doc = RAMLDocument.from_yaml(raml_content)
+# Create a new API
+doc = RAMLDocument()
+resource_mgr = ResourceManager(doc)
+
+# Add a resource
+resource_mgr.add_resource('/users')
+resource_mgr.add_method('/users', 'get', {
+    'description': 'List all users'
+})
+
+# Validate and save
 doc.validate()
-
-# Access document properties
-print(doc.title)
-print(doc.version)
+print(doc.to_yaml())
 ```
 
 ### Smithy
 
 ```python
-from pylaag_smithy import SmithyDocument
+from pylaag_smithy import SmithyDocument, ShapeManager
 
-# Parse a Smithy document
-doc = SmithyDocument.from_json(smithy_json)
+# Create a new model
+doc = SmithyDocument()
+shape_mgr = ShapeManager(doc)
+
+# Add a shape
+shape_mgr.add_shape('com.example#User', 'structure', {
+    'members': {
+        'id': {'target': 'smithy.api#String'},
+        'name': {'target': 'smithy.api#String'}
+    }
+})
+
+# Validate and save
 doc.validate()
+print(doc.to_json())
+```
 
-# Access shapes
-print(doc.shapes)
+## More Examples
+
+### Generate Sample Data
+
+```python
+from pylaag_openapi import SampleGenerator
+
+sample_gen = SampleGenerator(doc)
+sample = sample_gen.generate_from_schema({
+    'type': 'object',
+    'properties': {
+        'name': {'type': 'string'},
+        'email': {'type': 'string', 'format': 'email'}
+    }
+})
+print(sample)  # {'name': 'xyz', 'email': 'user@example.com'}
+```
+
+### Generate Client Code
+
+```python
+from pylaag_openapi import CodeGenerator
+
+code_gen = CodeGenerator(doc)
+python_client = code_gen.generate_client('python')
+js_client = code_gen.generate_client('javascript')
+ts_client = code_gen.generate_client('typescript')
+```
+
+### Generate Curl Commands
+
+```python
+from pylaag_openapi import CurlGenerator
+
+curl_gen = CurlGenerator(doc)
+curl_cmd = curl_gen.generate_curl('/users', 'post')
+print(curl_cmd)
 ```
 
 ## Development
