@@ -2,10 +2,9 @@
 
 from typing import Any
 
-from pylaag_core import NotFoundError
-
-from pylaag_smithy.document import SmithyDocument
-from pylaag_smithy.shapes import ShapeManager
+from pylaag.core import NotFoundError
+from pylaag.smithy.document import SmithyDocument
+from pylaag.smithy.shapes import ShapeManager
 
 
 class TraitManager:

@@ -3,8 +3,8 @@
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_core import NotFoundError
-from pylaag_smithy import ShapeManager, SmithyDocument, TraitManager
+from pylaag.core import NotFoundError
+from pylaag.smithy import ShapeManager, SmithyDocument, TraitManager
 
 
 @st.composite

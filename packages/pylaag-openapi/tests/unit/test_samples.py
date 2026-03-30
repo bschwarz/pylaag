@@ -1,6 +1,6 @@
 """Unit tests for sample generation from OpenAPI schemas."""
 
-from pylaag_openapi import OpenAPIDocument, SampleGenerator
+from pylaag.openapi import OpenAPIDocument, SampleGenerator
 
 
 class TestSampleGenerator:

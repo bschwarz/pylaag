@@ -2,7 +2,7 @@
 
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_smithy import ShapeManager, SmithyDocument
+from pylaag.smithy import ShapeManager, SmithyDocument
 
 
 @st.composite

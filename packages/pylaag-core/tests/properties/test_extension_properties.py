@@ -3,8 +3,8 @@
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_core.base import LaagBase
-from pylaag_core.errors import ValidationError
+from pylaag.core.base import LaagBase
+from pylaag.core.errors import ValidationError
 
 
 class TestDocument(LaagBase):

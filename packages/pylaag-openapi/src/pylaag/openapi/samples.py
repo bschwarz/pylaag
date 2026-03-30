@@ -4,8 +4,8 @@ import random
 import string
 from typing import Any
 
-from pylaag_openapi.components import ComponentManager
-from pylaag_openapi.document import OpenAPIDocument
+from pylaag.openapi.components import ComponentManager
+from pylaag.openapi.document import OpenAPIDocument
 
 
 class SampleGenerator:

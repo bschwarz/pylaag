@@ -2,7 +2,7 @@
 
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_openapi import CurlGenerator, OpenAPIDocument
+from pylaag.openapi import CurlGenerator, OpenAPIDocument
 
 # Strategy for generating HTTP methods
 http_methods = st.sampled_from(["get", "post", "put", "delete", "patch"])

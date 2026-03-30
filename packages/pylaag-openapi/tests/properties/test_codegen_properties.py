@@ -5,7 +5,7 @@ import re
 
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_openapi import CodeGenerator, OpenAPIDocument
+from pylaag.openapi import CodeGenerator, OpenAPIDocument
 
 
 # Strategy for generating valid OpenAPI documents with operations

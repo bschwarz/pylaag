@@ -18,7 +18,7 @@ Complete API reference for the laag Python library.
 Abstract base class for all API document handlers.
 
 ```python
-from pylaag_core import LaagBase
+from pylaag.core import LaagBase
 ```
 
 #### Methods
@@ -93,7 +93,7 @@ Get a nested value from a dictionary using dot notation.
 
 **Example:**
 ```python
-from pylaag_core import get_nested
+from pylaag.core import get_nested
 
 data = {'a': {'b': {'c': 1}}}
 value = get_nested(data, 'a.b.c')  # Returns 1
@@ -109,7 +109,7 @@ Set a nested value in a dictionary using dot notation.
 
 **Example:**
 ```python
-from pylaag_core import set_nested
+from pylaag.core import set_nested
 
 data = {}
 set_nested(data, 'a.b.c', 1)  # Creates {'a': {'b': {'c': 1}}}
@@ -133,7 +133,7 @@ Delete a nested value from a dictionary using dot notation.
 Represents an OpenAPI document.
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 ```
 
 #### Class Methods
@@ -199,7 +199,7 @@ Get the paths object.
 Manages paths and operations in an OpenAPI document.
 
 ```python
-from pylaag_openapi import PathManager
+from pylaag.openapi import PathManager
 
 path_mgr = PathManager(document)
 ```
@@ -262,7 +262,7 @@ Get an operation.
 Manages reusable components in an OpenAPI document.
 
 ```python
-from pylaag_openapi import ComponentManager
+from pylaag.openapi import ComponentManager
 
 comp_mgr = ComponentManager(document)
 ```
@@ -313,7 +313,7 @@ Resolve a $ref reference.
 Generates sample data from OpenAPI schemas.
 
 ```python
-from pylaag_openapi import SampleGenerator
+from pylaag.openapi import SampleGenerator
 
 sample_gen = SampleGenerator(document)
 ```
@@ -346,7 +346,7 @@ Generate a sample value from a schema.
 Generates client code from OpenAPI documents.
 
 ```python
-from pylaag_openapi import CodeGenerator
+from pylaag.openapi import CodeGenerator
 
 code_gen = CodeGenerator(document)
 ```
@@ -371,7 +371,7 @@ Generate a complete client in the specified language.
 Generates curl commands from OpenAPI operations.
 
 ```python
-from pylaag_openapi import CurlGenerator
+from pylaag.openapi import CurlGenerator
 
 curl_gen = CurlGenerator(document)
 ```
@@ -401,7 +401,7 @@ Generate a curl command for an operation.
 Represents a RAML document.
 
 ```python
-from pylaag_raml import RAMLDocument
+from pylaag.raml import RAMLDocument
 ```
 
 #### Class Methods
@@ -448,7 +448,7 @@ Get the base URI.
 Manages resources and methods in a RAML document.
 
 ```python
-from pylaag_raml import ResourceManager
+from pylaag.raml import ResourceManager
 
 resource_mgr = ResourceManager(document)
 ```
@@ -502,7 +502,7 @@ Remove a method from a resource.
 Manages type definitions in a RAML document.
 
 ```python
-from pylaag_raml import TypeManager
+from pylaag.raml import TypeManager
 
 type_mgr = TypeManager(document)
 ```
@@ -541,7 +541,7 @@ Get a type definition.
 Represents a Smithy document.
 
 ```python
-from pylaag_smithy import SmithyDocument
+from pylaag.smithy import SmithyDocument
 ```
 
 #### Class Methods
@@ -588,7 +588,7 @@ Get the shapes object.
 Manages shapes in a Smithy document.
 
 ```python
-from pylaag_smithy import ShapeManager
+from pylaag.smithy import ShapeManager
 
 shape_mgr = ShapeManager(document)
 ```
@@ -634,7 +634,7 @@ Resolve a target reference to a shape.
 Manages traits applied to shapes in a Smithy document.
 
 ```python
-from pylaag_smithy import TraitManager
+from pylaag.smithy import TraitManager
 
 trait_mgr = TraitManager(document)
 ```
@@ -677,7 +677,7 @@ Get a trait value from a shape.
 Manages operations in a Smithy document.
 
 ```python
-from pylaag_smithy import OperationManager
+from pylaag.smithy import OperationManager
 
 op_mgr = OperationManager(document)
 ```

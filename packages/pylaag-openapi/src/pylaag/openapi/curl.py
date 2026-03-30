@@ -3,10 +3,9 @@
 import json
 from urllib.parse import quote
 
-from pylaag_core import NotFoundError
-
-from pylaag_openapi.document import OpenAPIDocument
-from pylaag_openapi.samples import SampleGenerator
+from pylaag.core import NotFoundError
+from pylaag.openapi.document import OpenAPIDocument
+from pylaag.openapi.samples import SampleGenerator
 
 
 class CurlGenerator:

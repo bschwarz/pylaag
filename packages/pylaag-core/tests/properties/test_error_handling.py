@@ -2,7 +2,7 @@
 
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_core.errors import LaagError, NotFoundError, ParseError, ValidationError
+from pylaag.core.errors import LaagError, NotFoundError, ParseError, ValidationError
 
 
 @given(

@@ -26,7 +26,7 @@ import { OpenAPIDocument, PathManager } from '@laag/openapi';
 
 **Python:**
 ```python
-from pylaag_openapi import OpenAPIDocument, PathManager
+from pylaag.openapi import OpenAPIDocument, PathManager
 ```
 
 ### Package Names
@@ -157,7 +157,7 @@ try {
 
 **Python:**
 ```python
-from pylaag_core import ValidationError
+from pylaag.core import ValidationError
 
 try:
     doc.validate()
@@ -348,7 +348,7 @@ async function buildApi() {
 ### Python Version
 
 ```python
-from pylaag_openapi import OpenAPIDocument, PathManager, ComponentManager
+from pylaag.openapi import OpenAPIDocument, PathManager, ComponentManager
 
 def build_api():
     doc = OpenAPIDocument()

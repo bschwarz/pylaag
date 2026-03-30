@@ -44,7 +44,7 @@ pip install pylaag-smithy   # Smithy support only
 ### OpenAPI
 
 ```python
-from pylaag_openapi import OpenAPIDocument, PathManager
+from pylaag.openapi import OpenAPIDocument, PathManager
 
 # Create a new API
 doc = OpenAPIDocument()
@@ -66,7 +66,7 @@ print(doc.to_yaml())
 ### RAML
 
 ```python
-from pylaag_raml import RAMLDocument, ResourceManager
+from pylaag.raml import RAMLDocument, ResourceManager
 
 # Create a new API
 doc = RAMLDocument()
@@ -86,7 +86,7 @@ print(doc.to_yaml())
 ### Smithy
 
 ```python
-from pylaag_smithy import SmithyDocument, ShapeManager
+from pylaag.smithy import SmithyDocument, ShapeManager
 
 # Create a new model
 doc = SmithyDocument()
@@ -110,7 +110,7 @@ print(doc.to_json())
 ### Generate Sample Data
 
 ```python
-from pylaag_openapi import SampleGenerator
+from pylaag.openapi import SampleGenerator
 
 sample_gen = SampleGenerator(doc)
 sample = sample_gen.generate_from_schema({
@@ -126,7 +126,7 @@ print(sample)  # {'name': 'xyz', 'email': 'user@example.com'}
 ### Generate Client Code
 
 ```python
-from pylaag_openapi import CodeGenerator
+from pylaag.openapi import CodeGenerator
 
 code_gen = CodeGenerator(doc)
 python_client = code_gen.generate_client('python')
@@ -137,7 +137,7 @@ ts_client = code_gen.generate_client('typescript')
 ### Generate Curl Commands
 
 ```python
-from pylaag_openapi import CurlGenerator
+from pylaag.openapi import CurlGenerator
 
 curl_gen = CurlGenerator(doc)
 curl_cmd = curl_gen.generate_curl('/users', 'post')

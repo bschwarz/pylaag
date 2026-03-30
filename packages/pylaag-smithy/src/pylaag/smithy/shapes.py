@@ -2,7 +2,7 @@
 
 from typing import Any, Literal
 
-from pylaag_smithy.document import SmithyDocument
+from pylaag.smithy.document import SmithyDocument
 
 ShapeType = Literal[
     "service",

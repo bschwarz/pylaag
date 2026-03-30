@@ -4,7 +4,7 @@ import json
 from typing import Any
 
 import yaml
-from pylaag_core import LaagBase, ParseError, ValidationError
+from pylaag.core import LaagBase, ParseError, ValidationError
 
 
 class OpenAPIDocument(LaagBase[dict[str, Any]]):

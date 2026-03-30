@@ -3,7 +3,7 @@
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_openapi import ComponentManager, ComponentType, OpenAPIDocument
+from pylaag.openapi import ComponentManager, ComponentType, OpenAPIDocument
 
 # Strategy for generating component types
 component_type_strategy = st.sampled_from(

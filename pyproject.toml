@@ -113,9 +113,19 @@ warn_no_return = true
 strict_equality = true
 explicit_package_bases = true
 namespace_packages = true
+mypy_path = [
+    "packages/pylaag-core/src",
+    "packages/pylaag-openapi/src",
+    "packages/pylaag-raml/src",
+    "packages/pylaag-smithy/src",
+]
 exclude = [
     "^packages/.*/tests/",
 ]
+
+[[tool.mypy.overrides]]
+module = "pylaag.core.*"
+disallow_untyped_defs = true
 
 [[tool.mypy.overrides]]
 module = "tests.*"

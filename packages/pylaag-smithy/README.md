@@ -23,7 +23,7 @@ This will automatically install `pylaag-core` as a dependency.
 ## Quick Start
 
 ```python
-from pylaag_smithy import SmithyDocument
+from pylaag.smithy import SmithyDocument
 
 # Parse a Smithy document
 doc = SmithyDocument.from_json(smithy_json)
@@ -42,7 +42,7 @@ json_output = doc.to_json()
 ### Document Management
 
 ```python
-from pylaag_smithy import SmithyDocument
+from pylaag.smithy import SmithyDocument
 
 # Create a new document
 doc = SmithyDocument()
@@ -62,7 +62,7 @@ print(doc.shapes)
 ### Shape Management
 
 ```python
-from pylaag_smithy import SmithyDocument, ShapeManager
+from pylaag.smithy import SmithyDocument, ShapeManager
 
 doc = SmithyDocument()
 shape_mgr = ShapeManager(doc)
@@ -94,7 +94,7 @@ shape_mgr.remove_shape('com.example#User')
 ### Trait Management
 
 ```python
-from pylaag_smithy import SmithyDocument, TraitManager
+from pylaag.smithy import SmithyDocument, TraitManager
 
 doc = SmithyDocument()
 trait_mgr = TraitManager(doc)
@@ -120,7 +120,7 @@ trait_mgr.remove_trait_from_shape('com.example#ListUsers', 'smithy.api#http')
 ### Operation Management
 
 ```python
-from pylaag_smithy import SmithyDocument, OperationManager
+from pylaag.smithy import SmithyDocument, OperationManager
 
 doc = SmithyDocument()
 op_mgr = OperationManager(doc)
@@ -143,7 +143,7 @@ op_mgr.remove_operation('com.example#ListUsers')
 ### Extension Properties
 
 ```python
-from pylaag_smithy import SmithyDocument
+from pylaag.smithy import SmithyDocument
 
 doc = SmithyDocument()
 
