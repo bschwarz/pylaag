@@ -1,6 +1,6 @@
 """Unit tests for RAML resource and type managers."""
 
-from pylaag_raml import RAMLDocument, ResourceManager, TypeManager
+from pylaag.raml import RAMLDocument, ResourceManager, TypeManager
 
 
 class TestResourceManager:

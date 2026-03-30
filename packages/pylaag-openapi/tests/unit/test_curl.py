@@ -1,8 +1,8 @@
 """Unit tests for curl command generation."""
 
 import pytest
-from pylaag_core import NotFoundError
-from pylaag_openapi import CurlGenerator, OpenAPIDocument
+from pylaag.core import NotFoundError
+from pylaag.openapi import CurlGenerator, OpenAPIDocument
 
 
 def test_generate_curl_for_get_request():

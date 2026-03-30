@@ -23,7 +23,7 @@ This will automatically install `pylaag-core` and `pyyaml` as dependencies.
 ## Quick Start
 
 ```python
-from pylaag_raml import RAMLDocument
+from pylaag.raml import RAMLDocument
 
 # Parse a RAML document
 doc = RAMLDocument.from_yaml(raml_content)
@@ -43,7 +43,7 @@ yaml_output = doc.to_yaml()
 ### Document Management
 
 ```python
-from pylaag_raml import RAMLDocument
+from pylaag.raml import RAMLDocument
 
 # Create a new document
 doc = RAMLDocument()
@@ -64,7 +64,7 @@ print(doc.base_uri)
 ### Resource Management
 
 ```python
-from pylaag_raml import RAMLDocument, ResourceManager
+from pylaag.raml import RAMLDocument, ResourceManager
 
 doc = RAMLDocument()
 resource_mgr = ResourceManager(doc)
@@ -102,7 +102,7 @@ resource_mgr.remove_resource('/users')
 ### Type Management
 
 ```python
-from pylaag_raml import RAMLDocument, TypeManager
+from pylaag.raml import RAMLDocument, TypeManager
 
 doc = RAMLDocument()
 type_mgr = TypeManager(doc)
@@ -137,7 +137,7 @@ type_mgr.remove_type('User')
 ### Extension Properties
 
 ```python
-from pylaag_raml import RAMLDocument
+from pylaag.raml import RAMLDocument
 
 doc = RAMLDocument()
 

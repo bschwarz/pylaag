@@ -368,12 +368,12 @@ wheels = [
 
 [[package]]
 name = "pylaag-core"
-version = "0.1.0"
+version = "0.2.0"
 source = { editable = "packages/pylaag-core" }
 
 [[package]]
 name = "pylaag-openapi"
-version = "0.1.0"
+version = "0.2.0"
 source = { editable = "packages/pylaag-openapi" }
 dependencies = [
     { name = "pylaag-core" },
@@ -388,7 +388,7 @@ requires-dist = [
 
 [[package]]
 name = "pylaag-raml"
-version = "0.1.0"
+version = "0.2.0"
 source = { editable = "packages/pylaag-raml" }
 dependencies = [
     { name = "pylaag-core" },
@@ -403,7 +403,7 @@ requires-dist = [
 
 [[package]]
 name = "pylaag-smithy"
-version = "0.1.0"
+version = "0.2.0"
 source = { editable = "packages/pylaag-smithy" }
 dependencies = [
     { name = "pylaag-core" },

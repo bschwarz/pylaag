@@ -24,7 +24,7 @@ This will automatically install `pylaag-core` and `pyyaml` as dependencies.
 ## Quick Start
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 
 # Parse an OpenAPI document
 doc = OpenAPIDocument.from_yaml(yaml_content)
@@ -45,7 +45,7 @@ json_output = doc.to_json()
 ### Document Management
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 
 # Create a new document
 doc = OpenAPIDocument()
@@ -64,7 +64,7 @@ doc.validate()  # Raises ValidationError if invalid
 ### Path and Operation Management
 
 ```python
-from pylaag_openapi import OpenAPIDocument, PathManager
+from pylaag.openapi import OpenAPIDocument, PathManager
 
 doc = OpenAPIDocument()
 path_mgr = PathManager(doc)
@@ -100,7 +100,7 @@ path_mgr.remove_operation('/users', 'get')
 ### Component Management
 
 ```python
-from pylaag_openapi import OpenAPIDocument, ComponentManager
+from pylaag.openapi import OpenAPIDocument, ComponentManager
 
 doc = OpenAPIDocument()
 comp_mgr = ComponentManager(doc)
@@ -130,7 +130,7 @@ comp_mgr.remove_component('schemas', 'User')
 ### Sample Generation
 
 ```python
-from pylaag_openapi import OpenAPIDocument, SampleGenerator
+from pylaag.openapi import OpenAPIDocument, SampleGenerator
 
 doc = OpenAPIDocument.from_yaml(yaml_content)
 sample_gen = SampleGenerator(doc)
@@ -153,7 +153,7 @@ sample = sample_gen.generate_from_schema(schema)
 ### Code Generation
 
 ```python
-from pylaag_openapi import OpenAPIDocument, CodeGenerator
+from pylaag.openapi import OpenAPIDocument, CodeGenerator
 
 doc = OpenAPIDocument.from_yaml(yaml_content)
 code_gen = CodeGenerator(doc)
@@ -171,7 +171,7 @@ ts_code = code_gen.generate_client('typescript')
 ### Curl Command Generation
 
 ```python
-from pylaag_openapi import OpenAPIDocument, CurlGenerator
+from pylaag.openapi import OpenAPIDocument, CurlGenerator
 
 doc = OpenAPIDocument.from_yaml(yaml_content)
 curl_gen = CurlGenerator(doc)
@@ -192,7 +192,7 @@ print(curl_cmd)
 ### Extension Properties
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 
 doc = OpenAPIDocument()
 

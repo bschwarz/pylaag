@@ -2,8 +2,8 @@
 
 from typing import Any
 
-from pylaag_smithy.document import SmithyDocument
-from pylaag_smithy.shapes import ShapeManager
+from pylaag.smithy.document import SmithyDocument
+from pylaag.smithy.shapes import ShapeManager
 
 
 class OperationManager:

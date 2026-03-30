@@ -2,7 +2,7 @@
 
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_raml import RAMLDocument, TypeManager
+from pylaag.raml import RAMLDocument, TypeManager
 
 # Strategy for generating valid type names
 type_name_strategy = st.text(

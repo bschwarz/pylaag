@@ -1,6 +1,6 @@
 """Integration example demonstrating Smithy shape and trait management."""
 
-from pylaag_smithy import OperationManager, ShapeManager, SmithyDocument, TraitManager
+from pylaag.smithy import OperationManager, ShapeManager, SmithyDocument, TraitManager
 
 
 def main():

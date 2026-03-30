@@ -1,6 +1,6 @@
 """Integration example demonstrating RAML resource and type management."""
 
-from pylaag_raml import RAMLDocument, ResourceManager, TypeManager
+from pylaag.raml import RAMLDocument, ResourceManager, TypeManager
 
 
 def main():

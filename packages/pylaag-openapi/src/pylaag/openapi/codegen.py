@@ -2,7 +2,7 @@
 
 from typing import Any, Literal
 
-from pylaag_openapi.document import OpenAPIDocument
+from pylaag.openapi.document import OpenAPIDocument
 
 Language = Literal["python", "javascript", "typescript"]
 

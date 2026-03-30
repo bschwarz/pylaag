@@ -3,25 +3,25 @@
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_core.errors import LaagError, NotFoundError, ParseError, ValidationError
+from pylaag.core.errors import LaagError, NotFoundError, ParseError, ValidationError
 
 # Import all document types
 try:
-    from pylaag_openapi import OpenAPIDocument
+    from pylaag.openapi import OpenAPIDocument
 
     OPENAPI_AVAILABLE = True
 except ImportError:
     OPENAPI_AVAILABLE = False
 
 try:
-    from pylaag_raml import RAMLDocument
+    from pylaag.raml import RAMLDocument
 
     RAML_AVAILABLE = True
 except ImportError:
     RAML_AVAILABLE = False
 
 try:
-    from pylaag_smithy import SmithyDocument
+    from pylaag.smithy import SmithyDocument
 
     SMITHY_AVAILABLE = True
 except ImportError:

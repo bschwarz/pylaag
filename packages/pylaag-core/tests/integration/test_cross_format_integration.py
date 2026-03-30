@@ -7,25 +7,25 @@ work consistently and follow the same patterns.
 """
 
 import pytest
-from pylaag_core.errors import LaagError, ParseError, ValidationError
+from pylaag.core.errors import LaagError, ParseError, ValidationError
 
 # Import all document types
 try:
-    from pylaag_openapi import OpenAPIDocument
+    from pylaag.openapi import OpenAPIDocument
 
     OPENAPI_AVAILABLE = True
 except ImportError:
     OPENAPI_AVAILABLE = False
 
 try:
-    from pylaag_raml import RAMLDocument
+    from pylaag.raml import RAMLDocument
 
     RAML_AVAILABLE = True
 except ImportError:
     RAML_AVAILABLE = False
 
 try:
-    from pylaag_smithy import SmithyDocument
+    from pylaag.smithy import SmithyDocument
 
     SMITHY_AVAILABLE = True
 except ImportError:
@@ -412,7 +412,7 @@ class TestBaseClassConsistency:
     )
     def test_all_documents_inherit_from_laag_base(self):
         """Test that all document types inherit from LaagBase."""
-        from pylaag_core.base import LaagBase
+        from pylaag.core.base import LaagBase
 
         openapi_doc = OpenAPIDocument()
         raml_doc = RAMLDocument()

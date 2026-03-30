@@ -35,7 +35,7 @@ pip install pylaag-smithy   # For Smithy only
 ### OpenAPI Example
 
 ```python
-from pylaag_openapi import OpenAPIDocument, PathManager
+from pylaag.openapi import OpenAPIDocument, PathManager
 
 # Create a new OpenAPI document
 doc = OpenAPIDocument()
@@ -73,7 +73,7 @@ print(doc.to_yaml())
 #### Create a New Document
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 
 # Create with defaults
 doc = OpenAPIDocument()
@@ -93,7 +93,7 @@ doc = OpenAPIDocument({
 #### Load from File
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 
 # Load from YAML
 with open('api.yaml', 'r') as f:
@@ -121,7 +121,7 @@ with open('output.json', 'w') as f:
 ### Managing Paths and Operations
 
 ```python
-from pylaag_openapi import OpenAPIDocument, PathManager
+from pylaag.openapi import OpenAPIDocument, PathManager
 
 doc = OpenAPIDocument()
 path_mgr = PathManager(doc)
@@ -178,7 +178,7 @@ path_mgr.remove_path('/users/{userId}')
 ### Managing Components
 
 ```python
-from pylaag_openapi import OpenAPIDocument, ComponentManager
+from pylaag.openapi import OpenAPIDocument, ComponentManager
 
 doc = OpenAPIDocument()
 comp_mgr = ComponentManager(doc)
@@ -230,7 +230,7 @@ comp_mgr.remove_component('schemas', 'User')
 ### Generating Sample Data
 
 ```python
-from pylaag_openapi import OpenAPIDocument, ComponentManager, SampleGenerator
+from pylaag.openapi import OpenAPIDocument, ComponentManager, SampleGenerator
 
 doc = OpenAPIDocument()
 comp_mgr = ComponentManager(doc)
@@ -264,7 +264,7 @@ print(sample)
 ### Generating Client Code
 
 ```python
-from pylaag_openapi import OpenAPIDocument, PathManager, CodeGenerator
+from pylaag.openapi import OpenAPIDocument, PathManager, CodeGenerator
 
 doc = OpenAPIDocument()
 path_mgr = PathManager(doc)
@@ -302,7 +302,7 @@ with open('api_client.py', 'w') as f:
 ### Generating Curl Commands
 
 ```python
-from pylaag_openapi import OpenAPIDocument, PathManager, CurlGenerator
+from pylaag.openapi import OpenAPIDocument, PathManager, CurlGenerator
 
 doc = OpenAPIDocument()
 path_mgr = PathManager(doc)
@@ -349,7 +349,7 @@ print(curl_cmd)
 ### Working with Extension Properties
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 
 doc = OpenAPIDocument()
 
@@ -375,7 +375,7 @@ yaml_output = doc.to_yaml()
 ### Creating and Loading Documents
 
 ```python
-from pylaag_raml import RAMLDocument
+from pylaag.raml import RAMLDocument
 
 # Create a new RAML document
 doc = RAMLDocument()
@@ -393,7 +393,7 @@ with open('output.raml', 'w') as f:
 ### Managing Resources and Methods
 
 ```python
-from pylaag_raml import RAMLDocument, ResourceManager
+from pylaag.raml import RAMLDocument, ResourceManager
 
 doc = RAMLDocument()
 resource_mgr = ResourceManager(doc)
@@ -451,7 +451,7 @@ resource_mgr.remove_resource('/users/{userId}')
 ### Managing Types
 
 ```python
-from pylaag_raml import RAMLDocument, TypeManager
+from pylaag.raml import RAMLDocument, TypeManager
 
 doc = RAMLDocument()
 type_mgr = TypeManager(doc)
@@ -489,7 +489,7 @@ type_mgr.remove_type('Status')
 ### Complete RAML Example
 
 ```python
-from pylaag_raml import RAMLDocument, ResourceManager, TypeManager
+from pylaag.raml import RAMLDocument, ResourceManager, TypeManager
 
 # Create document
 doc = RAMLDocument({
@@ -540,7 +540,7 @@ with open('api.raml', 'w') as f:
 ### Creating and Loading Documents
 
 ```python
-from pylaag_smithy import SmithyDocument
+from pylaag.smithy import SmithyDocument
 
 # Create a new Smithy document
 doc = SmithyDocument()
@@ -558,7 +558,7 @@ with open('output.json', 'w') as f:
 ### Managing Shapes
 
 ```python
-from pylaag_smithy import SmithyDocument, ShapeManager
+from pylaag.smithy import SmithyDocument, ShapeManager
 
 doc = SmithyDocument()
 shape_mgr = ShapeManager(doc)
@@ -600,7 +600,7 @@ shape_mgr.remove_shape('com.example#UserList')
 ### Managing Traits
 
 ```python
-from pylaag_smithy import SmithyDocument, ShapeManager, TraitManager
+from pylaag.smithy import SmithyDocument, ShapeManager, TraitManager
 
 doc = SmithyDocument()
 shape_mgr = ShapeManager(doc)
@@ -631,7 +631,7 @@ trait_mgr.remove_trait_from_shape('com.example#GetUser', 'smithy.api#readonly')
 ### Managing Operations
 
 ```python
-from pylaag_smithy import SmithyDocument, ShapeManager, OperationManager
+from pylaag.smithy import SmithyDocument, ShapeManager, OperationManager
 
 doc = SmithyDocument()
 shape_mgr = ShapeManager(doc)
@@ -675,7 +675,7 @@ op_mgr.remove_operation('com.example#GetUser')
 ### Complete Smithy Example
 
 ```python
-from pylaag_smithy import SmithyDocument, ShapeManager, TraitManager, OperationManager
+from pylaag.smithy import SmithyDocument, ShapeManager, TraitManager, OperationManager
 
 # Create document
 doc = SmithyDocument({
@@ -730,8 +730,8 @@ with open('model.json', 'w') as f:
 ### Error Handling
 
 ```python
-from pylaag_core import ValidationError, ParseError, NotFoundError
-from pylaag_openapi import OpenAPIDocument
+from pylaag.core import ValidationError, ParseError, NotFoundError
+from pylaag.openapi import OpenAPIDocument
 
 try:
     # Parse invalid JSON
@@ -749,7 +749,7 @@ except ValidationError as e:
 
 try:
     # Access non-existent component
-    from pylaag_openapi import ComponentManager
+    from pylaag.openapi import ComponentManager
     comp_mgr = ComponentManager(doc)
     schema = comp_mgr.get_component('schemas', 'NonExistent')
     if schema is None:
@@ -761,7 +761,7 @@ except NotFoundError as e:
 ### Nested Object Navigation
 
 ```python
-from pylaag_core import get_nested, set_nested, delete_nested
+from pylaag.core import get_nested, set_nested, delete_nested
 
 # Complex nested structure
 api_spec = {
@@ -797,7 +797,7 @@ print(deleted)  # True
 ### Document Conversion
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 
 # Load YAML, save as JSON
 with open('api.yaml', 'r') as f:
@@ -817,7 +817,7 @@ with open('api.yaml', 'w') as f:
 ### Programmatic API Building
 
 ```python
-from pylaag_openapi import OpenAPIDocument, PathManager, ComponentManager
+from pylaag.openapi import OpenAPIDocument, PathManager, ComponentManager
 
 def build_crud_api(resource_name, schema):
     """Build a complete CRUD API for a resource."""
@@ -928,8 +928,8 @@ print(api.to_yaml())
 ### 1. Always Validate Documents
 
 ```python
-from pylaag_openapi import OpenAPIDocument
-from pylaag_core import ValidationError
+from pylaag.openapi import OpenAPIDocument
+from pylaag.core import ValidationError
 
 doc = OpenAPIDocument()
 # ... make modifications ...
@@ -945,7 +945,7 @@ except ValidationError as e:
 
 ```python
 # Good: Use managers
-from pylaag_openapi import OpenAPIDocument, PathManager, ComponentManager
+from pylaag.openapi import OpenAPIDocument, PathManager, ComponentManager
 
 doc = OpenAPIDocument()
 path_mgr = PathManager(doc)
@@ -961,7 +961,7 @@ comp_mgr.add_component('schemas', 'User', {...})
 ### 3. Handle Errors Gracefully
 
 ```python
-from pylaag_core import LaagError
+from pylaag.core import LaagError
 
 try:
     # Your code here
@@ -976,7 +976,7 @@ except LaagError as e:
 ### 4. Use Extension Properties for Metadata
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 
 doc = OpenAPIDocument()
 
@@ -989,7 +989,7 @@ doc.set_extension('x-internal', True)
 ### 5. Leverage Sample Generation for Testing
 
 ```python
-from pylaag_openapi import SampleGenerator, ComponentManager
+from pylaag.openapi import SampleGenerator, ComponentManager
 
 # Generate test data automatically
 sample_gen = SampleGenerator(doc)
@@ -1006,7 +1006,7 @@ response = requests.post('https://api.example.com/users', json=test_data)
 ### 6. Version Your API Specifications
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 
 doc = OpenAPIDocument({
     'openapi': '3.0.0',

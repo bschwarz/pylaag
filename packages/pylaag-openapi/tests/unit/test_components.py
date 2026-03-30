@@ -1,7 +1,7 @@
 """Unit tests for ComponentManager class."""
 
 import pytest
-from pylaag_openapi import ComponentManager, OpenAPIDocument
+from pylaag.openapi import ComponentManager, OpenAPIDocument
 
 
 class TestComponentManager:

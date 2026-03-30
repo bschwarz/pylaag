@@ -13,7 +13,7 @@ pip install pylaag-openapi pylaag-raml pylaag-smithy
 ### Load and Save
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 
 # Load
 doc = OpenAPIDocument.from_yaml(open('api.yaml').read())
@@ -34,7 +34,7 @@ doc.validate()  # Always validate before saving
 ### Add Paths and Operations
 
 ```python
-from pylaag_openapi import PathManager
+from pylaag.openapi import PathManager
 
 path_mgr = PathManager(doc)
 
@@ -69,7 +69,7 @@ path_mgr.add_operation('/users/{id}', 'get', {
 ### Manage Components
 
 ```python
-from pylaag_openapi import ComponentManager
+from pylaag.openapi import ComponentManager
 
 comp_mgr = ComponentManager(doc)
 
@@ -92,7 +92,7 @@ resolved = comp_mgr.resolve_reference('#/components/schemas/User')
 ### Generate Samples
 
 ```python
-from pylaag_openapi import SampleGenerator
+from pylaag.openapi import SampleGenerator
 
 sample_gen = SampleGenerator(doc)
 sample = sample_gen.generate_from_schema({
@@ -107,7 +107,7 @@ sample = sample_gen.generate_from_schema({
 ### Generate Code
 
 ```python
-from pylaag_openapi import CodeGenerator
+from pylaag.openapi import CodeGenerator
 
 code_gen = CodeGenerator(doc)
 python_client = code_gen.generate_client('python')
@@ -118,7 +118,7 @@ ts_client = code_gen.generate_client('typescript')
 ### Generate Curl
 
 ```python
-from pylaag_openapi import CurlGenerator
+from pylaag.openapi import CurlGenerator
 
 curl_gen = CurlGenerator(doc)
 curl = curl_gen.generate_curl('/users', 'post', base_url='https://api.example.com')
@@ -142,7 +142,7 @@ doc.remove_extension('x-internal')
 ### Load and Save
 
 ```python
-from pylaag_raml import RAMLDocument
+from pylaag.raml import RAMLDocument
 
 # Load
 doc = RAMLDocument.from_yaml(open('api.raml').read())
@@ -161,7 +161,7 @@ doc.validate()
 ### Add Resources
 
 ```python
-from pylaag_raml import ResourceManager
+from pylaag.raml import ResourceManager
 
 resource_mgr = ResourceManager(doc)
 
@@ -184,7 +184,7 @@ resource_mgr.add_method('/users', 'get', {
 ### Manage Types
 
 ```python
-from pylaag_raml import TypeManager
+from pylaag.raml import TypeManager
 
 type_mgr = TypeManager(doc)
 
@@ -206,7 +206,7 @@ user_type = type_mgr.get_type('User')
 ### Load and Save
 
 ```python
-from pylaag_smithy import SmithyDocument
+from pylaag.smithy import SmithyDocument
 
 # Load
 doc = SmithyDocument.from_json(open('model.json').read())
@@ -225,7 +225,7 @@ doc.validate()
 ### Add Shapes
 
 ```python
-from pylaag_smithy import ShapeManager
+from pylaag.smithy import ShapeManager
 
 shape_mgr = ShapeManager(doc)
 
@@ -249,7 +249,7 @@ shape = shape_mgr.get_shape('com.example#User')
 ### Add Traits
 
 ```python
-from pylaag_smithy import TraitManager
+from pylaag.smithy import TraitManager
 
 trait_mgr = TraitManager(doc)
 
@@ -266,7 +266,7 @@ trait = trait_mgr.get_trait('com.example#GetUser', 'smithy.api#http')
 ### Add Operations
 
 ```python
-from pylaag_smithy import OperationManager
+from pylaag.smithy import OperationManager
 
 op_mgr = OperationManager(doc)
 
@@ -281,7 +281,7 @@ op_mgr.add_operation(
 ## Error Handling
 
 ```python
-from pylaag_core import ValidationError, ParseError, NotFoundError
+from pylaag.core import ValidationError, ParseError, NotFoundError
 
 try:
     doc.validate()
@@ -296,7 +296,7 @@ except NotFoundError as e:
 ## Utility Functions
 
 ```python
-from pylaag_core import get_nested, set_nested, delete_nested
+from pylaag.core import get_nested, set_nested, delete_nested
 
 data = {'a': {'b': {'c': 1}}}
 
@@ -326,7 +326,7 @@ except ValidationError as e:
 ### Build CRUD API
 
 ```python
-from pylaag_openapi import OpenAPIDocument, PathManager, ComponentManager
+from pylaag.openapi import OpenAPIDocument, PathManager, ComponentManager
 
 doc = OpenAPIDocument()
 path_mgr = PathManager(doc)
@@ -358,7 +358,7 @@ yaml_output = doc.to_yaml()
 ### Generate Test Data
 
 ```python
-from pylaag_openapi import SampleGenerator, ComponentManager
+from pylaag.openapi import SampleGenerator, ComponentManager
 
 sample_gen = SampleGenerator(doc)
 comp_mgr = ComponentManager(doc)
@@ -378,7 +378,7 @@ All functions and methods have full type hints:
 
 ```python
 from typing import Dict, Any, Optional
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 
 def process_api(doc: OpenAPIDocument) -> Dict[str, Any]:
     doc.validate()

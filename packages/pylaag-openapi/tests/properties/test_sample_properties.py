@@ -2,7 +2,7 @@
 
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_openapi import OpenAPIDocument, SampleGenerator
+from pylaag.openapi import OpenAPIDocument, SampleGenerator
 
 
 # Strategy for generating simple JSON schemas (without $ref)

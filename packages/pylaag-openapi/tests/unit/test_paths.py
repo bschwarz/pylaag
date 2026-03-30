@@ -1,6 +1,6 @@
 """Unit tests for PathManager class."""
 
-from pylaag_openapi import OpenAPIDocument, PathManager
+from pylaag.openapi import OpenAPIDocument, PathManager
 
 
 class TestPathManager:

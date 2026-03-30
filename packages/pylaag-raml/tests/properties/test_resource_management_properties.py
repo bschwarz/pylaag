@@ -2,7 +2,7 @@
 
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_raml import RAMLDocument, ResourceManager
+from pylaag.raml import RAMLDocument, ResourceManager
 
 
 # Strategy for generating valid resource paths

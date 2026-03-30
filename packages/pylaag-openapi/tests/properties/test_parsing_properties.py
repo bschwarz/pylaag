@@ -5,8 +5,8 @@ import json
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_core.errors import ParseError, ValidationError
-from pylaag_openapi import OpenAPIDocument
+from pylaag.core.errors import ParseError, ValidationError
+from pylaag.openapi import OpenAPIDocument
 
 
 # Strategy for generating valid OpenAPI documents

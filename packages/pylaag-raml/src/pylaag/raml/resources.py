@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from pylaag_raml.document import RAMLDocument
+from pylaag.raml.document import RAMLDocument
 
 
 class ResourceManager:

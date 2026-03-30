@@ -3,7 +3,7 @@
 import json
 from typing import Any
 
-from pylaag_core import LaagBase, ParseError, ValidationError
+from pylaag.core import LaagBase, ParseError, ValidationError
 
 
 class SmithyDocument(LaagBase[dict[str, Any]]):

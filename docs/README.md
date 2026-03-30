@@ -61,7 +61,7 @@ pip install pylaag-openapi pylaag-raml pylaag-smithy
 ### Hello World - OpenAPI
 
 ```python
-from pylaag_openapi import OpenAPIDocument, PathManager
+from pylaag.openapi import OpenAPIDocument, PathManager
 
 # Create a new API
 doc = OpenAPIDocument()
@@ -132,7 +132,7 @@ Smithy 2.0 support including:
 Full type hints throughout the library for excellent IDE support and static analysis.
 
 ```python
-from pylaag_openapi import OpenAPIDocument
+from pylaag.openapi import OpenAPIDocument
 from typing import Dict, Any
 
 def process_api(doc: OpenAPIDocument) -> Dict[str, Any]:
@@ -161,7 +161,7 @@ doc.set_extension('x-api-id', 'user-api-v1')
 Automatic sample data generation from schemas.
 
 ```python
-from pylaag_openapi import SampleGenerator
+from pylaag.openapi import SampleGenerator
 
 sample_gen = SampleGenerator(doc)
 sample = sample_gen.generate_from_schema(schema)
@@ -171,7 +171,7 @@ sample = sample_gen.generate_from_schema(schema)
 Generate client code in multiple languages.
 
 ```python
-from pylaag_openapi import CodeGenerator
+from pylaag.openapi import CodeGenerator
 
 code_gen = CodeGenerator(doc)
 python_client = code_gen.generate_client('python')
@@ -183,7 +183,7 @@ ts_client = code_gen.generate_client('typescript')
 Generate curl commands for testing APIs.
 
 ```python
-from pylaag_openapi import CurlGenerator
+from pylaag.openapi import CurlGenerator
 
 curl_gen = CurlGenerator(doc)
 curl_cmd = curl_gen.generate_curl('/users', 'post')
@@ -214,7 +214,7 @@ Generate client SDKs in multiple programming languages.
 All laag errors inherit from `LaagError`:
 
 ```python
-from pylaag_core import LaagError, ValidationError, ParseError, NotFoundError
+from pylaag.core import LaagError, ValidationError, ParseError, NotFoundError
 
 try:
     doc = OpenAPIDocument.from_yaml(content)

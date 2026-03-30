@@ -1,8 +1,8 @@
 """Unit tests for Smithy managers."""
 
 import pytest
-from pylaag_core import NotFoundError
-from pylaag_smithy import OperationManager, ShapeManager, SmithyDocument, TraitManager
+from pylaag.core import NotFoundError
+from pylaag.smithy import OperationManager, ShapeManager, SmithyDocument, TraitManager
 
 
 class TestShapeManager:

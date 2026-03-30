@@ -3,8 +3,8 @@
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_core.errors import ParseError, ValidationError
-from pylaag_raml import RAMLDocument
+from pylaag.core.errors import ParseError, ValidationError
+from pylaag.raml import RAMLDocument
 
 
 # Strategy for generating valid RAML documents

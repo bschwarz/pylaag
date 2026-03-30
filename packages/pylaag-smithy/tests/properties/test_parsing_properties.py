@@ -3,8 +3,8 @@
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
-from pylaag_core.errors import ParseError
-from pylaag_smithy import SmithyDocument
+from pylaag.core.errors import ParseError
+from pylaag.smithy import SmithyDocument
 
 
 # Strategy for generating valid Smithy documents

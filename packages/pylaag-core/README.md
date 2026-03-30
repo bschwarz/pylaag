@@ -32,7 +32,7 @@ pip install pylaag-core
 ### Base Class
 
 ```python
-from pylaag_core import LaagBase
+from pylaag.core import LaagBase
 
 class MyDocument(LaagBase):
     def validate(self) -> None:
@@ -44,7 +44,7 @@ class MyDocument(LaagBase):
 ### Error Handling
 
 ```python
-from pylaag_core import ValidationError, ParseError, NotFoundError
+from pylaag.core import ValidationError, ParseError, NotFoundError
 
 try:
     doc.validate()
@@ -56,7 +56,7 @@ except ValidationError as e:
 ### Utility Functions
 
 ```python
-from pylaag_core import get_nested, set_nested, delete_nested
+from pylaag.core import get_nested, set_nested, delete_nested
 
 data = {'a': {'b': {'c': 1}}}
 
@@ -73,7 +73,7 @@ deleted = delete_nested(data, 'a.b.c')  # Returns True
 ### Extension Properties
 
 ```python
-from pylaag_core import LaagBase
+from pylaag.core import LaagBase
 
 doc = MyDocument()
 
