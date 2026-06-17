@@ -1,0 +1,130 @@
+# pylaag
+
+> pylaag is a Python library collection for reading, writing, and manipulating API specification formats. It is the Python port of the [laag](https://github.com/bschwarz/laag) TypeScript library, providing equivalent functionality with idiomatic Python APIs.
+
+## Packages
+
+- `pylaag-openapi` — Read and write OpenAPI 3.0+ documents, validate specs, generate sample data, client code (Python/JS/TS), and curl commands
+- `pylaag-smithy` — Parse and manipulate AWS Smithy 2.0 models (JSON AST format)
+- `pylaag-raml` — RAML support (in development)
+- `pylaag-core` — Abstract base class (`LaagBase`) and shared errors used by all packages
+
+## Installation
+
+```bash
+pip install pylaag-openapi pylaag-smithy
+```
+
+## @pylaag/openapi — OpenAPIDocument + manager classes
+
+```python
+from pylaag.openapi import (
+    OpenAPIDocument, PathManager, HttpMethod,
+    ComponentManager, ComponentType,
+    SampleGenerator, CodeGenerator, Language, CurlGenerator,
+)
+
+# Create / parse
+doc = OpenAPIDocument()                          # empty doc with defaults
+doc = OpenAPIDocument({"openapi": "3.0.0", ...})
+doc = OpenAPIDocument.from_json(json_str)
+doc = OpenAPIDocument.from_yaml(yaml_str)
+
+# Properties
+doc.openapi_version    # "3.0.0"
+doc.info               # {"title": ..., "version": ...}
+doc.paths              # {"paths": {...}}
+
+# Serialize
+doc.to_json(indent=2)  # JSON string
+doc.to_yaml()          # YAML string
+
+# Validate (raises ValidationError if invalid)
+doc.validate()
+
+# PathManager
+path_mgr = PathManager(doc)
+path_mgr.add_path("/users")
+path_mgr.add_operation("/users", "get", {"summary": "...", "responses": {...}})
+path_mgr.get_operation("/users", "get")    # dict | None
+path_mgr.get_path("/users")               # dict | None
+path_mgr.remove_operation("/users", "get") # bool
+path_mgr.remove_path("/users")             # bool
+
+# ComponentManager
+comp_mgr = ComponentManager(doc)
+comp_mgr.add_component("schemas", "User", {"type": "object", "properties": {...}})
+comp_mgr.get_component("schemas", "User")     # dict | None
+comp_mgr.remove_component("schemas", "User")  # bool
+comp_mgr.resolve_reference("#/components/schemas/User")  # dict | None
+
+# SampleGenerator
+gen = SampleGenerator(doc)
+gen.generate_from_schema(schema_dict)  # returns sample value
+
+# CurlGenerator
+curl_gen = CurlGenerator(doc)
+curl_gen.generate_curl("/users", "post", base_url="https://api.example.com")
+# raises NotFoundError if operation missing
+
+# CodeGenerator
+codegen = CodeGenerator(doc)
+codegen.generate_client("python")      # Python requests client
+codegen.generate_client("javascript")  # JS fetch client
+codegen.generate_client("typescript")  # TS fetch client
+```
+
+## @pylaag/smithy — SmithyDocument + manager classes
+
+```python
+from pylaag.smithy import SmithyDocument, ShapeManager, TraitManager, OperationManager
+
+# Create / parse
+doc = SmithyDocument()
+doc = SmithyDocument({"smithy": "2.0", "shapes": {}})
+doc = SmithyDocument.from_json(json_str)
+
+# Properties
+doc.smithy_version  # "2.0"
+doc.shapes          # dict[str, Any]
+
+# Serialize & validate
+doc.to_json(indent=2)
+doc.validate()  # raises ValidationError if missing required fields
+
+# ShapeManager
+shape_mgr = ShapeManager(doc)
+shape_mgr.add_shape("com.example#User", "structure", {"members": {...}})
+shape_mgr.get_shape("com.example#User")       # dict | None
+shape_mgr.resolve_target("com.example#User")  # dict | None
+shape_mgr.remove_shape("com.example#User")    # bool
+
+# Shape types: "service" | "operation" | "resource" | "structure" | "union" |
+#              "list" | "map" | "string" | "integer" | "long" | "float" |
+#              "double" | "boolean" | "blob" | "timestamp"
+
+# TraitManager
+trait_mgr = TraitManager(doc)
+trait_mgr.add_trait_to_shape("com.example#GetUser", "smithy.api#readonly")
+trait_mgr.add_trait_to_shape("com.example#GetUser", "smithy.api#http", {"method": "GET", "uri": "/users/{id}"})
+trait_mgr.get_trait("com.example#GetUser", "smithy.api#http")  # Any | None
+trait_mgr.remove_trait_from_shape("com.example#GetUser", "smithy.api#http")  # bool
+# raises NotFoundError if shape doesn't exist
+```
+
+## @pylaag/core — LaagBase, errors
+
+```python
+from pylaag.core import LaagBase, ParseError, ValidationError, NotFoundError
+
+# All packages' document classes extend LaagBase.
+# ParseError    — raised when JSON/YAML cannot be parsed
+# ValidationError — raised on invalid document structure
+# NotFoundError   — raised when a referenced resource doesn't exist
+```
+
+## Source & Docs
+
+- GitHub: https://github.com/bschwarz/pylaag
+- OpenAPI package README: https://github.com/bschwarz/pylaag/blob/main/packages/pylaag-openapi/README.md
+- Smithy package README: https://github.com/bschwarz/pylaag/blob/main/packages/pylaag-smithy/README.md

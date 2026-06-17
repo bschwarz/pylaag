@@ -38,6 +38,7 @@ pip install pylaag-smithy   # Smithy support only
 - **[User Guide](docs/USER_GUIDE.md)** - Comprehensive tutorials and examples
 - **[API Reference](docs/API_REFERENCE.md)** - Detailed API documentation
 - **[Quick Reference](docs/QUICK_REFERENCE.md)** - Fast lookup for common tasks
+- **[AI Skills](docs/skills/)** - Reusable skills for Claude Code, Kiro, and other AI tools
 
 ## Quick Start
 
